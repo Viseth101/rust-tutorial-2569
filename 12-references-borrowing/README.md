@@ -13,7 +13,7 @@
 | # | Name                                      | Student ID | GitHub Username | Main Responsibility                     |
 | - | ----------------------------------------- | ---------- | --------------- | --------------------------------------- |
 | 1 | Mr.UDTARAKVISETH LAY                      | 670710259  | `@Viseth101`  | Concept + Short Code                    |
-| 2 | นายกรันต์ชัย คำทรัพย์ | 670710290  | `@[username]` | Detailed Code + Live Demo               |
+| 2 | นายกรันต์ชัย คำทรัพย์ | 670710290  | `@[670710290]` | Detailed Code + Live Demo               |
 | 3 | นางสาวณัฐณิชา ภู่วงษ์ | 670710291  | `@[username]` | Rust vs Other Language + PPL Analysis   |
 | 4 | นายเทพพิทักษ์ นิลดำ     | 670710292  | `@[username]` | Exercises + Common Mistakes + Challenge |
 
