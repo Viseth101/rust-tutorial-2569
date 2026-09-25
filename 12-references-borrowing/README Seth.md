@@ -61,7 +61,7 @@ fn calculate_length(s: &String) -> usize {
 
 **คำอธิบายการทำงานทีละบรรทัด**
 
-- `let my_string = String::from("Silpakorn");` สร้าง `String` บนฮีป และให้ `my_string` เป็นเจ้าของข้อมูล
+- `let my_string = String::from("Silpakorn");` สร้างค่า `String` ที่มีโครงสร้างอยู่บนสแตกและบัฟเฟอร์ข้อมูลอยู่บนฮีป โดยให้ `my_string` เป็นเจ้าของข้อมูล
 - `let length = calculate_length(&my_string);` ใช้ `&` สร้าง Immutable Reference แล้วส่งไปยังฟังก์ชัน จึงเป็นการยืมโดยไม่ย้าย Ownership
 - `fn calculate_length(s: &String) -> usize` กำหนดให้ `s` รับ Reference ของ `String` และคืนค่าชนิด `usize`
 - `s.len()` อ่านความยาวของ String ผ่าน Reference แล้วส่งค่าความยาวกลับไป โดยไม่ได้แก้ไขข้อมูล
