@@ -146,6 +146,6 @@ fn main() {
 
 **Explanation**
 
-`โค้ดนี้ไม่สามารถ compile ได้เนื่องจากทั้ง 2 ฟังก์ชั่นคืนค่าเป็น reference แทนที่จะคือ ownership มาให้ สามารถแก้ได้โดยการเปลี่ยน return type เป็น String`
+`โค้ดนี้ไม่สามารถ compile ได้เพราะ get_report() ประกาศว่าจะคืนค่า &'static str แต่ longest_line() คืน reference ที่ยืมมาจาก text ซึ่งเป็น local variable และมีอายุไม่ถึง 'static จึงไม่สามารถคืน reference นี้ออกจากฟังก์ชันได้ วิธีแก้หนึ่งคือเปลี่ยน return type ของทั้งสองฟังก์ชันเป็น String เพื่อคืน ownership ของข้อความ`
 
 ---
