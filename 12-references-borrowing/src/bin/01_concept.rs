@@ -1,47 +1,40 @@
-/* 
-
 // 01_concept.rs
-// จุดประสงค์: เพื่อแสดงให้เห็นว่า References ช่วยให้เราใช้งานข้อมูลได้โดยไม่ต้องแย่งความเป็นเจ้าของ (Ownership)
+// จุดประสงค์: สาธิต References, Borrowing และ Ownership / Purpose: Demonstrate References, Borrowing, and Ownership.
 
 fn main() {
-    // 1. สร้างตัวแปร String โดย my_string จะเป็น "เจ้าของ" (Owner) ของข้อมูลนี้
+    // my_string เป็นเจ้าของข้อมูล / my_string owns the data.
     let my_string = String::from("Silpakorn");
 
-    // 2. ส่ง REFERENCE ของ my_string ไปให้ฟังก์ชันโดยใช้เครื่องหมาย &
-    // สิ่งนี้เรียกว่า "การยืม" (Borrowing) คือการให้ฟังก์ชันอื่นอ่านข้อมูลได้ แต่ไม่ได้ให้ความเป็นเจ้าของไป
+    // ส่ง immutable reference ด้วย & เรียกว่า Borrowing: ฟังก์ชันอ่านข้อมูลได้แต่ไม่รับ Ownership ไป
+    // Pass an immutable reference with &: the function can read the data without taking Ownership.
     let length = calculate_length(&my_string);
 
-    // 3. เนื่องจากเราแค่ "ให้ยืม" my_string จึงยังมีชีวิตอยู่และสามารถใช้งานต่อได้ในบรรทัดนี้!
-    // (ถ้าเราไม่ใช้ & โค้ดบรรทัดนี้จะเกิด Error ตอน Compile ทันที)
-    println!("ความยาวของคำว่า '{}' คือ {} ตัวอักษร", my_string, length);
-}
-
-// ฟังก์ชันนี้รับค่าเป็น Reference ของ String (&String) แทนที่จะยึดความเป็นเจ้าของมา
-fn calculate_length(s: &String) -> usize {
-    s.len() // คำนวณความยาวและส่งค่ากลับ
-}
-
-*/
-
-// -----------------------------------English----------------------------------------
-// 01_concept.rs
-// Purpose: Demonstrating how References allow us to use data without taking ownership.
-
-fn main() {
-    // 1. We create a String. `my_string` is the "owner" of this data.
-    let my_string = String::from("Silpakorn");
-
-    // 2. We pass a REFERENCE to my_string using the `&` symbol.
-    // This is called "Borrowing". We are letting the function look at the data, 
-    // but we are NOT giving away ownership.
-    let length = calculate_length(&my_string);
-
-    // 3. Because we only "borrowed" it, my_string is still valid and we can still use it here!
-    // (If we didn't use `&`, this line would cause a compile error).
+    // my_string ยังใช้งานได้ เพราะเรา Borrowing แทนการย้าย Ownership
+    // my_string is still valid because we borrowed it instead of moving its Ownership.
     println!("The length of '{}' is {}.", my_string, length);
+
+    // ตัวแปรต้องเป็น mut เพื่ออนุญาตให้สร้าง mutable reference
+    // The variable must be mut to allow a mutable reference.
+    let mut greeting = String::from("Hello");
+
+    // ส่ง mutable reference ด้วย &mut เพื่อให้ฟังก์ชันแก้ไขข้อมูลเดิมได้
+    // Pass a mutable reference with &mut so the function can modify the original data.
+    append_text(&mut greeting);
+
+    // greeting ยังเป็นเจ้าของข้อมูลและใช้งานได้หลังการ Borrowing
+    // greeting still owns and can use the data after Borrowing.
+    println!("After borrowing mutably: {}", greeting);
 }
 
-// This function takes a reference to a String (&String) instead of taking ownership.
+// รับ immutable reference จึงไม่รับ Ownership ของ String
+// Takes an immutable reference, so it does not take String Ownership.
 fn calculate_length(s: &String) -> usize {
-    s.len() // It calculates the length and returns it
+    s.len()
 }
+
+// รับ mutable reference เพื่อแก้ไข String โดยไม่รับ Ownership
+// Takes a mutable reference to modify String without taking Ownership.
+fn append_text(s: &mut String) {
+    s.push_str(", Rust!");
+}
+
