@@ -11,7 +11,7 @@ fn demonstrate_immutable_reference_error() {
 
     // บรรทัดนี้จะเกิด error: cannot borrow `*message_reference` as mutable,
     // as it is behind a `&` reference
-    // message_reference.push_str("ข้อความใหม่");
+    message_reference.push_str("ข้อความใหม่");
     // เหตุผลคือ & เป็น immutable reference จึงอ่านข้อมูลได้อย่างเดียว
     // หากต้องการแก้ไข ต้องใช้ &mut และตัวแปรต้นฉบับต้องประกาศด้วย mut
 }
