@@ -802,19 +802,19 @@ Rust ผูกช่วงอายุของทรัพยากร (Resourc
 
 **Member 1**
 
-`[สิ่งที่รับผิดชอบ]`
+`Introduction + Key Concept + Important Syntax/Rule`
 
 **Member 2**
 
-`[สิ่งที่รับผิดชอบ]`
+`Runable Code Example`
 
 **Member 3**
 
-`[สิ่งที่รับผิดชอบ]`
+`PPL Perspective + Compare Rust with other languages`
 
 **Member 4**
 
-`[สิ่งที่รับผิดชอบ]`
+`Common Mistakes + Exercise`
 
 > สมาชิกทุกคนต้องสามารถอธิบาย Code ของกลุ่มได้ ไม่ใช่เฉพาะส่วนที่ตนเองเขียน
 
@@ -824,10 +824,10 @@ Rust ผูกช่วงอายุของทรัพยากร (Resourc
 
 > แนะนำให้มีอย่างน้อย **4 แหล่งอ้างอิง** และควรใช้เอกสารทางการเป็นหลัก
 
-1. `[The Rust Programming Language — Rust Book]`
-2. `[Rust by Example / Rust Reference]`
-3. `[Official documentation ที่เกี่ยวข้องกับ Topic]`
-4. `[แหล่งอ้างอิงเพิ่มเติม]`
+1. `The Rust Programming Language: https://doc.rust-lang.org/book/`
+2. `Rust by Example / Rust Reference`
+3. `W3School: https://www.w3schools.com/rust/`
+4. `The Rust Programming Language:: https://www.scs.stanford.edu/~zyedidia/docs/rust/rust_book.pdf page 82-96`
 
 ---
 
@@ -837,15 +837,16 @@ Rust ผูกช่วงอายุของทรัพยากร (Resourc
 
 | AI Tool | Purpose | How the Result Was Verified |
 |---|---|---|
-| `[เช่น ChatGPT]` | `[ใช้เพื่ออะไร]` | `[ตรวจสอบอย่างไร]` |
-| `[AI tool]` | `[ใช้เพื่ออะไร]` | `[ตรวจสอบอย่างไร]` |
+| `ChatGPT` | `translate from English to Thai` | `Human Verification` |
+| `Gemini` | `find reference and document` | `Use the official website` |
+| `Claude` | `Code verification and mistake correction` | `run and compile the code` |
 
 ### Declaration
 
-- [ ] Code ทุกส่วนที่นำเสนอได้รับการ Compile และทดสอบแล้ว
-- [ ] สมาชิกทุกคนสามารถอธิบาย Code ที่นำเสนอได้
-- [ ] ตรวจสอบข้อมูลจากแหล่งอ้างอิงที่น่าเชื่อถือแล้ว
-- [ ] ระบุการใช้ AI อย่างโปร่งใส
+- [✔] Code ทุกส่วนที่นำเสนอได้รับการ Compile และทดสอบแล้ว
+- [✔] สมาชิกทุกคนสามารถอธิบาย Code ที่นำเสนอได้
+- [✔] ตรวจสอบข้อมูลจากแหล่งอ้างอิงที่น่าเชื่อถือแล้ว
+- [✔] ระบุการใช้ AI อย่างโปร่งใส
 
 **รายละเอียดการใช้ AI**
 
