@@ -1,9 +1,11 @@
 # Rust Tutorial Project — Principles of Programming Languages
 
 > **สำหรับนักศึกษา:** ใช้ไฟล์นี้เป็น Template สำหรับจัดทำบทเรียน Rust ของกลุ่ม  
-> **Topic No.:** `XX`  
-> **Topic Name:** `[ชื่อหัวข้อ]`  
-> **Group No.:** `XX`
+> **Topic No.:** `11`  
+> **Topic Name:** `Ownership`  
+> **Group No.:** `11`
+> 
+> **ประเด็นหลักที่ควรครอบคลุม:** ownership rules, move, copy, scope, memory management
 
 ---
 
@@ -11,10 +13,10 @@
 
 | # | Name | Student ID | GitHub Username | Main Responsibility |
 |---|---|---|---|---|
-| 1 | `[ชื่อ-นามสกุล]` | `[รหัส]` | `@[username]` | Concept + Code |
-| 2 | `[ชื่อ-นามสกุล]` | `[รหัส]` | `@[username]` | Code + Demo |
-| 3 | `[ชื่อ-นามสกุล]` | `[รหัส]` | `@[username]` | Rust vs Other Language + PPL |
-| 4 | `[ชื่อ-นามสกุล]` | `[รหัส]` | `@[username]` | Exercises + Common Mistakes |
+| 1 | `สิริญญาธร ปุณกะบุตร` | `670710151` | `@670710151` | Concept + Code |
+| 2 | `อังกฤษ ถ้ำสุวรรณ` | `670710152` | `@670710152` | Code + Demo |
+| 3 | `ภูริณัฐ สุวรรณสังโส` | `670710153` | `@670710153` | Rust vs Other Language + PPL |
+| 4 | `Sothea Sokea` | `670710258` | `@sotheasokea` | Exercises + Common Mistakes |
 
 ---
 
@@ -33,69 +35,138 @@
 
 อธิบายว่า Topic นี้คืออะไร มีความสำคัญอย่างไร และใช้แก้ปัญหาอะไรในการเขียนโปรแกรม
 
-`[เขียนเนื้อหาที่นี่]`
+1.`Topic นี้คืออะไร`<br>
+--> `ระบบ (set of rules) ที่ Rust ใช้จัดการหน่วยความจำ (memory management) โดยไม่ต้องมี Garbage Collector`<br>
+2.`ทำไมถึงสำคัญ`<br>
+--> `Ownership เป็น แนวคิดที่เป็นเอกลักษณ์ที่สุด ของ Rust และเป็นรากฐานของฟีเจอร์อื่นเกือบทั้งหมดในภาษา (borrowing, lifetimes, smart pointers ล้วนต่อยอดจากแนวคิดนี้)`<br>
+-`ปลอดภัยเท่าภาษาที่มี Garbage Collector แต่เร็วเท่าภาษาระดับต่ำ`<br>
+-`ตรวจจับ bug ตั้งแต่ compile time`<br>
+-`ไม่มี runtime overhead`<br>
+3.`ใช้แก้ปัญหาอะไรในการเขียนโปรแกรม`<br>
+--> `ช่วยแก้ปัญหาความปลอดภัยของหน่วยความจำที่พบบ่อยในการเขียนโปรแกรม ได้แก่ `<br>
+-`dangling pointer (การเข้าถึงหน่วยความจำที่ถูกคืนไปแล้ว) `<br>
+-`double free (การคืนหน่วยความจำซ้ำ) `<br>
+-`memory leak (การลืมคืนหน่วยความจำ)`<br>
+`โดยไม่ต้องแลกกับ performance ของโปรแกรม ทำให้ Rust สามารถให้ทั้งความปลอดภัยและความเร็วไปพร้อมกันได้`<br>
 
 ---
 
 ## 4. Key Concepts
 
-### 4.1 `[Concept 1]`
+### 4.1 `Ownership คืออะไร (กฎพื้นฐาน 3 ข้อ)`
 
 **คำอธิบาย**
 
-`[อธิบายแนวคิด]`
+`Ownership คือระบบจัดการหน่วยความจำของ Rust โดยไม่ใช้ Garbage Collector `<br>
+`มีกฎ 3 ข้อ: `<br>
+`(1) ทุกๆค่า ใน Rust จะมี "เจ้าของ" (Owner) เสมอ `<br>
+`(2) เมื่อ owner หลุด scope ค่านั้นถูก drop ทันที โดยอัตโนมัติ`<br>
+`(3) มี owner ได้เพียง "คนเดียว" เท่านั้นในเวลาเดียวกัน`<br>
 
 **ตัวอย่าง**
 
 ```rust
 fn main() {
-    println!("Hello, Rust!");
+    let s = String::from("hello");
+    println!("{}", s);
+} // s หลุด scope ที่นี่ -> ถูก drop อัตโนมัติ
+```
+
+**Explanation**
+
+`ตัวแปร s เป็นเจ้าของค่า "hello" บน heap เมื่อโค้ดมาถึงปิดวงเล็บ } ซึ่งเป็นจุดที่ s หลุดออกจาก scope`<br>
+`Rust จะเรียก drop() ให้อัตโนมัติเพื่อคืนหน่วยความจำ โดยไม่ต้องเขียน free() เอง`<br>
+
+---
+
+### 4.2 `Move Semantics`
+
+`Move คือการ "ย้าย" ความเป็นเจ้าของ (ownership) จากตัวแปรเดิมไปยังตัวแปรใหม่`<br>
+`Rust ออกแบบให้ตัวแปรเดิมใช้งานต่อไม่ได้ทันทีหลัง move เพื่อป้องกันปัญหา double free`<br>
+`ช่วยแก้ปัญหาการที่สองตัวแปรชี้ไปยังข้อมูล heap เดียวกัน แล้วพยายาม drop ข้อมูลซ้ำตอน scope จบ`<br>
+`ตัวแปรที่ถูก move แล้ว compiler จะบล็อกไม่ให้ใช้ต่อ (compile error ทันที)`<br>
+
+```rust
+fn main() {
+    let s1 = String::from("hello");
+    let s2 = s1;  // ownership ย้ายจาก s1 ไป s2
+    println!("{}", s2);
 }
 ```
 
 **Explanation**
 
-`[อธิบายว่า code ทำงานอย่างไร]`
+`หลังบรรทัด let s2 = s1; ความเป็นเจ้าของถูกย้ายจาก s1 ไปยัง s2 ถ้าพยายามใช้ s1 ต่อ `<br>
+`เช่น println!("{}", s1) จะเกิด compile error ทันที เพราะ Rust ไม่ยอมให้มีสอง owner ชี้ไปยังข้อมูลก้อนเดียวกัน` <br>
+`ป้องกันปัญหาที่ทั้งสองตัวแปรจะพยายาม drop ข้อมูลเดียวกันซ้ำ`<br>
+
 
 ---
 
-### 4.2 `[Concept 2]`
+### 4.3 `Copy & Clone`
 
-`[อธิบายแนวคิด]`
+`Copy Trait: type พื้นฐานบน stack (i32, bool, char, f64) จะถูก copy อัตโนมัติแทนการ move เพราะคัดลอกแบบcost น้อย `<br>
+`Clone: สำหรับข้อมูลบน heap (เช่น String) ต้องเรียก .clone() เพื่อคัดลอกข้อมูลจริงแบบ deep copy อย่างชัดเจน`<br>
+`ช่วยแก้ปัญหากรณีต้องการใช้ตัวแปรสองตัวพร้อมกัน โดยไม่ทำให้ตัวแปรเดิมถูก move ทิ้ง`<br>
 
 ```rust
-// Rust code
+fn main() {
+    let x = 5;
+    let y = x;              // copy อัตโนมัติ (stack)
+    let s1 = String::from("hello");
+    let s2 = s1.clone();    // ต้องเรียก clone เอง (heap)
+    println!("{} {} {} {}", x, y, s1, s2);
+}
 ```
+
+**Explanation**
+
+`เนื่องจาก i32 มีขนาดคงที่และอยู่บน stack การคัดลอกค่ามีต้นทุนต่ำมาก Rust จึงอนุญาตให้ x และ y ใช้งานได้พร้อมกันโดยไม่ error` <br>
+`s1.clone() คัดลอกข้อมูลบน heap ทั้งหมดไปสร้างเป็นก้อนใหม่ให้ s2 ทำให้ s1 และ s2 ต่างมีข้อมูลของตัวเองแยกกันคนละก้อน จึงใช้งานได้พร้อมกันทั้งคู่โดยไม่เกิด error`<br>
+
 
 ---
 
-### 4.3 `[Concept 3]`
+### 4.4 `Scope`
 
-`[อธิบายแนวคิด]`
+`Scope คือขอบเขตของตัวแปรในโปรแกรม ตั้งแต่จุดที่ถูกประกาศจนถึงจุดที่ปิดวงเล็บ {}`<br>
+`Rust ผูก ownership เข้ากับ scope โดยตรง ตัวแปรมีผลใช้งานได้เฉพาะภายใน scope ของมันเท่านั้น`<br>
+`ช่วยแก้ปัญหาการจัดการหน่วยความจำแบบ Manual เพราะไม่ต้องกำหนดจุดคืนหน่วยความจำเอง(free)`<br>
+`เมื่อออกจาก scope ตัวแปรที่เป็น owner จะถูก drop ทันทีโดยอัตโนมัติ`<br>
 
 ```rust
-// Rust code
+fn main() {
+    {
+        let s = String::from("hello"); // s เริ่มมีผล
+        println!("{}", s);
+    } // s หลุด scope ที่นี่ -> ถูก drop
+    // println!("{}", s); //  error: s ไม่มีผลแล้วนอก scope
+}
 ```
+**Explanation**
+
+`ตัวแปร s มีผลใช้งานได้เฉพาะภายใน block {} ที่ประกาศเท่านั้น เมื่อโปรแกรมมาถึง } ซึ่งเป็นจุดสิ้นสุด scope ของ s`<br>
+`Rust จะ drop ค่านั้นให้อัตโนมัติทันที ถ้าเรียกใช้ s นอก scope จะเกิด compile error เพราะ ownership ผูกติดกับ scope โดยตรง`<br>
 
 ---
 
-### 4.4 `[Concept 4 — ถ้ามี]`
+### 4.5 `Memory Management`
 
-`[อธิบายแนวคิด]`
-
-```rust
-// Rust code
-```
-
----
-
-### 4.5 `[Concept 5 — ถ้ามี]`
-
-`[อธิบายแนวคิด]`
+`Memory Management คือการจัดการหน่วยความจำที่โปรแกรมขอใช้ (allocate) และคืน (deallocate) ให้ระบบ`<br>
+`Rust ไม่ใช้ Garbage Collector และไม่ให้เขียน free() เอง แต่ผูกการคืนหน่วยความจำเข้ากับ Ownership + Scope โดยตรง`<br>
+`ช่วยแก้ปัญหา runtime overhead ของภาษาที่มี GC และปัญหาความผิดพลาดจากการจัดการเองแบบ C/C++`<br>
+`compiler แทรกการเรียก drop() ให้อัตโนมัติตอน compile time ทำให้ปลอดภัยโดยไม่มี cost ตอน runtime`<br>
 
 ```rust
-// Rust code
+fn main() {
+    let s = String::from("hello"); // ขอหน่วยความจำบน heap
+    println!("{}", s);
+} // ออกจาก scope -> Rust คืนหน่วยความจำอัตโนมัติ ไม่ต้องเขียน free()
 ```
+**Explanation**
+
+`เมื่อ main() จบการทำงาน Rust ไม่ต้องรอ Garbage Collector และไม่ต้องเขียน free() เอง`<br>
+`compiler จะแทรกการเรียก drop() ให้อัตโนมัติตอน compile time ทันทีที่ owner หลุด scope ทำให้คืนหน่วยความจำได้แน่นอน ไม่มี runtime overhead และไม่เสี่ยง memory leak`<br>
 
 ---
 
@@ -103,15 +174,18 @@ fn main() {
 
 | Syntax / Rule | Meaning | Example |
 |---|---|---|
-| `[syntax/rule]` | `[ความหมาย]` | `[ตัวอย่าง]` |
-| `[syntax/rule]` | `[ความหมาย]` | `[ตัวอย่าง]` |
-| `[syntax/rule]` | `[ความหมาย]` | `[ตัวอย่าง]` |
+| `let x = y;` | `Assign ค่า — ถ้า y เป็น type บน heap (เช่น String) จะเกิด move; ถ้าเป็น type ที่มี Copy trait จะ copy อัตโนมัติ` | `let s2 = s1;` |
+| `.clone()` | `คัดลอกข้อมูลบน heap แบบ deep copy ทำให้ทั้งสองตัวแปรใช้งานได้พร้อมกัน` | `let s2 = s1.clone();` |
+| `{ }` | `กำหนด scope ของตัวแปร — เมื่อปิด block ตัวแปรที่เป็น owner ภายในจะถูก drop อัตโนมัติ` | `{ let s = String::from("hi"); }` |
+| `drop()` | `กฟังก์ชันที่ Rust เรียกอัตโนมัติเมื่อ owner หลุด scope เพื่อคืนหน่วยความจำ (ไม่ต้องเรียกเอง)` | `เรียกอัตโนมัติตอนปิด }` |
 
 ### Important Rules
 
-1. `[กฎสำคัญข้อที่ 1]`
-2. `[กฎสำคัญข้อที่ 2]`
-3. `[กฎสำคัญข้อที่ 3]`
+1. `ทุกๆค่า ใน Rust จะมี "เจ้าของ" (Owner) เสมอ`
+2. `เมื่อ owner หลุด scope ค่านั้นถูก drop ทันที โดยอัตโนมัติ`
+3. `มี owner ได้เพียง "คนเดียว" เท่านั้นในเวลาเดียวกัน`
+
+
 
 ---
 
