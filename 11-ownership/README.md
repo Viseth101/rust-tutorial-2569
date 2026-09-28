@@ -424,7 +424,7 @@ fn main() {
 
 1. `The Rust Programming Language: https://doc.rust-lang.org/book/`
 2. `Rust by Example / Rust Reference`
-3. `W2School: https://www.w3schools.com/rust/`
+3. `W3School: https://www.w3schools.com/rust/`
 4. `The Rust Programming Language:: https://www.scs.stanford.edu/~zyedidia/docs/rust/rust_book.pdf page 82-96`
 
 ---
