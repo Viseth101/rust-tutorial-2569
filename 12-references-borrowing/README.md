@@ -200,7 +200,7 @@ fn demonstrate_immutable_reference_error() {
 
     // Uncomment บรรทัดต่อไปนี้เพื่อสาธิต Error:
     // cannot borrow `*message_reference` as mutable, as it is behind a `&` reference
-    // message_reference.push_str("ข้อความใหม่");
+    message_reference.push_str("ข้อความใหม่");
     // เหตุผลคือ & เป็น immutable reference จึงอ่านข้อมูลได้อย่างเดียว
     // หากต้องการแก้ไข ต้องใช้ &mut และตัวแปรต้นฉบับต้องประกาศด้วย mut
 }
@@ -211,7 +211,7 @@ fn demonstrate_mutable_and_immutable_conflict() {
     let mutable_reference = &mut number;
     // Uncomment บรรทัดต่อไปนี้เพื่อสาธิต Error:
     // cannot borrow `number` as immutable because it is also borrowed as mutable
-    // let immutable_reference = &number;
+    let immutable_reference = &number;
     // Rust ไม่อนุญาตให้มี &mut และ & ที่ชี้ไปยังข้อมูลเดียวกันในช่วงเวลาเดียวกัน
     // เพื่อป้องกันการอ่านค่าที่ไม่สอดคล้องกันขณะมีการแก้ไขข้อมูล
 
@@ -827,7 +827,7 @@ int main() {
 | Member   | Responsibility                          |  Time |
 | -------- | --------------------------------------- | ----: |
 | Member 1 | Concept + Short Code Illustration       | 5 min |
-| Member 2 | Detailed Code + Live Demo               |    -- |
+| Member 2 | Detailed Code + Live Demo               | 5 min |
 | Member 3 | Rust vs Other Language + PPL Analysis   | 5 min |
 | Member 4 | Exercises + Common Mistakes + Challenge | 5 min |
 
@@ -868,12 +868,11 @@ int main() {
 
 สามารถใช้ AI เป็นเครื่องมือช่วยเรียนรู้และพัฒนาได้ แต่สมาชิกทุกคนต้องเข้าใจและสามารถอธิบายผลงานของกลุ่มได้
 
-| Member   | AI Tool                | Purpose                                                                                               | How the Result Was Verified                                                                 |
-| -------- | ---------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| Member 1 | GitHub Copilot         | ช่วยตรวจสอบ Code, Review, วางแผน และช่วยเขียน Code                       | ตรวจสอบกับ Rust Book, Compiler และ`cargo check`                              |
-| Member 1 | Gemini                 | ช่วยวางแผน เขียน Code และตั้งคำถามเพื่อทบทวนความเข้าใจ | ตรวจสอบผลลัพธ์ด้วยเอกสารอ้างอิงและการ Compile จริง |
-| Member 3 | `[ระบุ AI tool]` | `[ระบุวัตถุประสงค์]`                                                                | `[ระบุวิธีตรวจสอบ]`                                                        |
-| Member 4 | `[ระบุ AI tool]` | `[ระบุวัตถุประสงค์]`                                                                | `[ระบุวิธีตรวจสอบ]`                                                        |
+| Member   | AI Tool                 | Purpose                                                                          | How the Result Was Verified                                                                                                                                      |
+| -------- | ----------------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Member 1 | Gemini, GitHub Copilot | วางแผน, ช่วยเขียน Code และช่วยตรวจสอบ Code, Review | ตรวจสอบกับ Rust Book, `Compiler`, `cargo check` และตรวจสอบผลลัพธ์ด้วยเอกสารอ้างอิงและการ Compile จริง |
+| Member 3 | `[ระบุ AI tool]`  | `[ระบุวัตถุประสงค์]`                                           | `[ระบุวิธีตรวจสอบ]`                                                                                                                             |
+| Member 4 | `[ระบุ AI tool]`  | `[ระบุวัตถุประสงค์]`                                           | `[ระบุวิธีตรวจสอบ]`                                                                                                                             |
 
 ### Declaration
 
@@ -905,7 +904,7 @@ Member 1 ใช้ GitHub Copilot เพื่อช่วยตรวจสอ�
 
 **Problems encountered**
 
-ปัญหาที่พบคือสมาชิก 2 ถอนรายวิชา ทำให้ส่วน Detailed Code และ Demo ไม่มีผู้นำเสนอเดิม
+ปัญหาที่พบคือสมาชิก 2 ถอนรายวิชา ทำให้ส่วน Detailed Code และ Demo ไม่มีผู้รับผิดชอบ
 
 **How did you solve them?**
 
