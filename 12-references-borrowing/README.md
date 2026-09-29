@@ -1,6 +1,5 @@
 # Rust Tutorial Project — Principles of Programming Languages
 
-> **สำหรับนักศึกษา:** ใช้ไฟล์นี้เป็น Template สำหรับจัดทำบทเรียน Rust ของกลุ่ม
 > **Topic No.:** `12`
 > **Topic Name:** `References & Borrowing`
 > **Group No.:** `12`
@@ -112,6 +111,8 @@ fn append_text(s: &mut String) {
 2. ห้ามมี Mutable Reference และ Immutable Reference ของข้อมูลเดียวกันพร้อมกัน เพราะอาจทำให้เกิด Data Race
 3. Reference ทุกตัวต้องชี้ไปยังข้อมูลที่ยังมีอยู่จริงและมีอายุการใช้งาน (Lifetime) ครอบคลุม Reference นั้นเสมอ Rust จึงป้องกัน Dangling Reference ตั้งแต่ระยะคอมไพล์
 4. การสร้าง Mutable Reference ต้องใช้ตัวแปรเจ้าของที่ประกาศด้วย `mut`
+
+---
 
 ## 6. Runnable Code Examples
 
@@ -826,7 +827,7 @@ int main() {
 | Member   | Responsibility                          |  Time |
 | -------- | --------------------------------------- | ----: |
 | Member 1 | Concept + Short Code Illustration       | 5 min |
-| Member 2 | Detailed Code + Live Demo               | 5 min |
+| Member 2 | Detailed Code + Live Demo               |    -- |
 | Member 3 | Rust vs Other Language + PPL Analysis   | 5 min |
 | Member 4 | Exercises + Common Mistakes + Challenge | 5 min |
 
@@ -876,10 +877,10 @@ int main() {
 
 ### Declaration
 
-- [ ] Code ทุกส่วนที่นำเสนอได้รับการ Compile และทดสอบแล้ว
-- [ ] สมาชิกทุกคนสามารถอธิบาย Code ที่นำเสนอได้
-- [ ] ตรวจสอบข้อมูลจากแหล่งอ้างอิงที่น่าเชื่อถือแล้ว
-- [ ] ระบุการใช้ AI อย่างโปร่งใส
+- [X] Code ทุกส่วนที่นำเสนอได้รับการ Compile และทดสอบแล้ว
+- [X] สมาชิกทุกคนสามารถอธิบาย Code ที่นำเสนอได้
+- [X] ตรวจสอบข้อมูลจากแหล่งอ้างอิงที่น่าเชื่อถือแล้ว
+- [X] ระบุการใช้ AI อย่างโปร่งใส
 
 **รายละเอียดการใช้ AI**
 
@@ -889,48 +890,46 @@ Member 1 ใช้ GitHub Copilot เพื่อช่วยตรวจสอ�
 
 ## 14. GitHub Contribution
 
-| Member   |                    Issues | Commits |             Pull Requests |              Code Reviews | Contribution                                         |
-| -------- | ------------------------: | ------: | ------------------------: | ------------------------: | ---------------------------------------------------- |
-| Member 1 | ตรวจสอบบน GitHub |       7 | ตรวจสอบบน GitHub | ตรวจสอบบน GitHub | Concept, Short Code และ Code ของ Demo          |
-| Member 2 | ตรวจสอบบน GitHub |       0 | ตรวจสอบบน GitHub | ตรวจสอบบน GitHub | ถอนรายวิชา                                 |
-| Member 3 | ตรวจสอบบน GitHub |       6 | ตรวจสอบบน GitHub | ตรวจสอบบน GitHub | Rust vs Other Language และ PPL Analysis           |
-| Member 4 | ตรวจสอบบน GitHub |      11 | ตรวจสอบบน GitHub | ตรวจสอบบน GitHub | Common Mistakes, Exercises และ Demo documentation |
-
-> จำนวน Commit อ้างอิงจากประวัติ Git ใน Chapter 12 และรวมชื่อผู้เขียนที่เป็น Alias ของสมาชิกเดียวกัน ส่วน Issues, Pull Requests และ Code Reviews ต้องตรวจสอบจาก GitHub โดยตรง
+| Member   | Issues | Commits | Pull Requests | Code Reviews | Contribution                                         |
+| -------- | -----: | ------: | ------------: | -----------: | ---------------------------------------------------- |
+| Member 1 |      0 |       7 |             5 |           12 | Concept, Short Code และ Code ของ Demo          |
+| Member 2 |      0 |       0 |             1 |            0 | ถอนรายวิชา                                 |
+| Member 3 |      0 |       6 |             3 |            4 | Rust vs Other Language และ PPL Analysis           |
+| Member 4 |      0 |      11 |             3 |           13 | Common Mistakes, Exercises และ Demo documentation |
 
 ### Teamwork Reflection
 
 **How did your team collaborate?**
 
-ทีมแบ่งงานตามหัวข้อของบทเรียน สมาชิกแต่ละคนจัดทำส่วนที่ได้รับมอบหมาย แล้วรวมเนื้อหาและ Code ไว้ใน README เดียวกัน หลังจากสมาชิกหมายเลข 2 ถอนรายวิชา สมาชิกหมายเลข 1 รับผิดชอบ Code และสมาชิกหมายเลข 4 รับผิดชอบการจัดทำ Demo ในเอกสาร โดยยังคงมีผู้บรรยายจริง 3 คน
+ทีมแบ่งงานตามหัวข้อของบทเรียน สมาชิกแต่ละคนจัดทำส่วนที่ได้รับมอบหมาย แล้วรวมเนื้อหาและ Code ไว้ใน README เดียวกัน หลังจากสมาชิก 2 ถอนรายวิชา สมาชิก 1 รับผิดชอบ Code และสมาชิก 4 รับผิดชอบการจัดทำ Demo ในเอกสาร
 
 **Problems encountered**
 
-ปัญหาที่พบคือสมาชิกหมายเลข 2 ถอนรายวิชา ทำให้ส่วน Detailed Code และ Demo ไม่มีผู้นำเสนอเดิม และ Code ตัวอย่างบางส่วนต้องแสดง Compile Error เพื่ออธิบายกฎของ Borrow Checker
+ปัญหาที่พบคือสมาชิก 2 ถอนรายวิชา ทำให้ส่วน Detailed Code และ Demo ไม่มีผู้นำเสนอเดิม
 
 **How did you solve them?**
 
-ทีมแก้ปัญหาโดยแบ่งงานด้าน Code ให้ Member 1 และงานเขียน Demo ใน README ให้ Member 4 ส่วน Demo จะเก็บไว้เป็นเอกสารประกอบโดยไม่จัดเป็นช่วงนำเสนอแยกต่างหาก และ Comment บรรทัดที่ทำให้เกิด Error เพื่อให้โปรเจกต์ Compile ได้
+ทีมแก้ปัญหาโดยแบ่งงานด้าน Code ให้ Member 1 และงานเขียน Demo ใน README ให้ Member 4 ส่วน Demo จะเก็บไว้เป็นเอกสารประกอบโดยไม่จัดเป็นช่วงนำเสนอแยกต่างหาก
 
 ---
 
 ## 15. Final Checklist
 
-- [ ] Learning Objectives ครบ 3–4 ข้อ
-- [ ] Key Concepts ครบถ้วน
-- [ ] Syntax / Rules
-- [ ] Runnable Code Examples
-- [ ] Code Compile และ Run ได้จริง
-- [ ] Common Mistakes
-- [ ] Exercises 2 ข้อ พร้อม Solutions
-- [ ] PPL Perspective
-- [ ] Rust vs Other Language
-- [ ] References อย่างน้อย 4 แหล่ง
+- [X] Learning Objectives ครบ 3–4 ข้อ
+- [X] Key Concepts ครบถ้วน
+- [X] Syntax / Rules
+- [X] Runnable Code Examples
+- [X] Code Compile และ Run ได้จริง
+- [X] Common Mistakes
+- [X] Exercises 2 ข้อ พร้อม Solutions
+- [X] PPL Perspective
+- [X] Rust vs Other Language
+- [X] References อย่างน้อย 4 แหล่ง
 - [ ] AI Usage Declaration
-- [ ] GitHub Contribution
-- [ ] สมาชิกทั้ง 4 คนมีส่วนร่วม
-- [ ] สมาชิกทั้ง 4 คนพร้อมนำเสนอคนละ 5 นาที
-- [ ] สมาชิกทุกคนสามารถอธิบาย Code ของกลุ่มได้
+- [X] GitHub Contribution
+- [X] สมาชิกทั้ง 3 คนมีส่วนร่วม
+- [X] สมาชิกทั้ง 3 คนพร้อมนำเสนอคนละ 5 นาที
+- [X] สมาชิกทุกคนสามารถอธิบาย Code ของกลุ่มได้
 
 ---
 
