@@ -692,7 +692,7 @@ print("Length:", length)
 | Semantics / Behavior | Compiler ตรวจสอบ Ownership และ Borrowing ตั้งแต่ Compile Time                                                                                             | Reference ใช้เข้าถึง Object และ Object ถูกจัดการโดย Garbage Collector                            |
 | Type System          | Statically Typed และมี Reference Type เช่น`&T`, `&mut T` ซึ่งกำหนดลักษณะการเข้าถึงและสิทธิ์ในการแก้ไขข้อมูล | Statically Typed ต้องระบุ Type และ Reference จะระบุชนิดของ Object เช่น String หรือ Object |
 | Memory Management    | ใช้ Ownership และ Borrowing โดยไม่ต้องใช้ Garbage Collector เป็นกลไกหลัก                                                                    | ใช้ Garbage Collector จัดการ Memory ของ Object โดยอัตโนมัติ                                       |
-| Safety             z  | Compiler ช่วยตรวจสอบ Memory Safety และกฎการ Borrowing                                                                                                   | มี Memory Safety จากการใช้ Reference และ Garbage Collector แต่ไม่มี Borrow Checker แบบ Rust      |
+| Safety               | Compiler ช่วยตรวจสอบ Memory Safety และกฎการ Borrowing                                                                                                   | มี Memory Safety จากการใช้ Reference และ Garbage Collector แต่ไม่มี Borrow Checker แบบ Rust      |
 
 ### Rust Example
 
@@ -820,12 +820,12 @@ int main() {
 
 ## 11. Teach Your Topic
 
-การนำเสนอมีสมาชิก **4 คน คนละประมาณ 5 นาที**
+การนำเสนอมีสมาชิก **3 คน คนละประมาณ 5 นาที**
 
 | Member   | Responsibility                          |  Time |
 | -------- | --------------------------------------- | ----: |
 | Member 1 | Concept + Short Code Illustration       | 5 min |
-| Member 2 | Detailed Code + Live Demo               | 5 min |
+| Member 2 | Detailed Code + Live Demo               | - |
 | Member 3 | Rust vs Other Languages + PPL Analysis   | 5 min |
 | Member 4 | Exercises + Common Mistakes + Challenge | 5 min |
 
@@ -837,11 +837,11 @@ int main() {
 
 **Member 2**
 
-ถอนรายวิชา จึงไม่มีการนำเสนอหรือการส่งมอบงานในบทนี้`
+`ถอนรายวิชา จึงไม่มีการนำเสนอหรือการส่งมอบงานในบทนี้`
 
 **Member 3**
 
-`จัดทำเนื้อหา Rust vs Other Languages และ PPL Analysis
+จัดทำเนื้อหา Rust vs Other Languages และ PPL Analysis
 
 **Member 4**
 
