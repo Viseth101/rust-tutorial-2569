@@ -12,7 +12,7 @@
 | - | ----------------------------------------- | ---------- | --------------- | --------------------------------------- |
 | 1 | Mr.UDTARAKVISETH LAY                      | 670710259  | `@Viseth101`  | Concept + Short Code                    |
 | 2 | ถอนรายวิชา                      |            |                 |                                         |
-| 3 | นางสาวณัฐณิชา ภู่วงษ์ | 670710291  | `@nncp-fs`    | Rust vs Other Language + PPL Analysis   |
+| 3 | นางสาวณัฐณิชา ภู่วงษ์ | 670710291  | `@nncp-fs`    | Rust vs Other Languages + PPL Analysis   |
 | 4 | นายเทพพิทักษ์ นิลดำ     | 670710292  | `@670710292`  | Exercises + Common Mistakes + Challenge |
 
 > สมาชิกหมายเลข 2 ถอนรายวิชา จึงไม่มีหน้าที่นำเสนอ สมาชิกหมายเลข 1 รับผิดชอบการจัดทำ Code และสมาชิกหมายเลข 4 รับผิดชอบการจัดทำส่วน Demo ในเอกสารแทน โดยส่วน Demo จะจัดทำเป็นเอกสารและไม่ได้นำเสนอ
@@ -32,7 +32,7 @@
 
 ## 3. Introduction
 
-การจัดการหน่วยความจำเป็นความท้าทายสำคัญในการเขียนโปรแกรม ภาษาอย่าง C ให้ผู้พัฒนาจัดการหน่วยความจำด้วยตนเอง จึงอาจเกิดปัญหา เช่น Pointer ที่ชี้ไปยังข้อมูลซึ่งหมดอายุหรือการรั่วไหลของหน่วยความจำ ขณะที่บางภาษาใช้ Garbage Collector เพื่อจัดการหน่วยความจำโดยอัตโนมัติ
+การจัดการหน่วยความจำเป็นความท้าทายสำคัญในการเขียนโปรแกรม ภาษาอย่าง C เปิดให้ผู้พัฒนาจัดการหน่วยความจำด้วยตนเอง จึงอาจเกิดปัญหา เช่น Pointer ที่ชี้ไปยังข้อมูลซึ่งหมดอายุหรือการรั่วไหลของหน่วยความจำ ขณะที่บางภาษาใช้ Garbage Collector เพื่อจัดการหน่วยความจำโดยอัตโนมัติ
 
 Rust ใช้แนวคิด **Ownership** ซึ่งกำหนดให้ข้อมูลแต่ละชิ้นมีเจ้าของได้เพียงหนึ่งราย เมื่อเจ้าของออกจากขอบเขต (Scope) Rust จะคืนหน่วยความจำให้อัตโนมัติ อย่างไรก็ตาม หากต้องย้าย Ownership ทุกครั้งที่ส่งข้อมูลระหว่างฟังก์ชัน โค้ดจะไม่สะดวกและอาจไม่เหมาะกับการใช้งานบางรูปแบบ Rust จึงมี **References และ Borrowing** สำหรับยืมข้อมูลไปใช้งานโดยไม่รับ Ownership มา
 
@@ -180,7 +180,7 @@ fn main() {
 
 **Explanation**
 
-`หลังจากการทำ mutable reference เราสามารถแก้ไขข้อมูลผ่านตัวแปรที่ถือ mutable reference ได้ โดยสิ่งที่แก้ไขจะส่งผลกระทบต่อตัวแปรต้นทางด้วย`
+`หลังจากสร้าง Mutable Reference เราสามารถแก้ไขข้อมูลผ่านตัวแปรที่ถือ mutable reference ได้ โดยสิ่งที่แก้ไขจะส่งผลกระทบต่อตัวแปรต้นทางด้วย`
 
 ### Example 3 — `Reference restrictions showcase`
 
@@ -229,11 +229,9 @@ fn demonstrate_mutable_and_immutable_conflict() {
 
 **Explanation**
 
-`ใน demonstrate_immutable_reference_error() แสดงให้เห็นว่า การแก้ไขค่าผ่าน reference จะทำได้ก็ต่อเมื่อ reference ดังกล่าว(และตัวแปรต้นทาง) เป็น mutable เท่านั้น หากพยายามแก้ไขจะก่อให้เกิด error ใน demonstrate_mutable_and_immutable_conflict() เป็นการ showcase borrow conflict หากไม่ยึดตามกด n immutable reference xor 1 mutable reference`
+`ใน demonstrate_immutable_reference_error() แสดงให้เห็นว่า การแก้ไขค่าผ่าน reference จะทำได้ก็ต่อเมื่อ reference ดังกล่าว(และตัวแปรต้นทาง) เป็น mutable เท่านั้น หากพยายามแก้ไขจะก่อให้เกิด error ใน demonstrate_mutable_and_immutable_conflict() เป็นการ showcase borrow conflict หากไม่ยึดตามกฎ n immutable reference xor 1 mutable reference`
 
 ---
-
-# 7. Common Mistakes
 
 ## 7. Common Mistakes
 
@@ -621,7 +619,7 @@ Rust ใช้ References & Borrowing เพื่อสร้างสมดุ
 
 ---
 
-## 10. Rust vs. Other Language
+## 10. Rust vs. Other Languages
 
 **Comparison Language:** `Python`
 
@@ -694,7 +692,7 @@ print("Length:", length)
 | Semantics / Behavior | Compiler ตรวจสอบ Ownership และ Borrowing ตั้งแต่ Compile Time                                                                                             | Reference ใช้เข้าถึง Object และ Object ถูกจัดการโดย Garbage Collector                            |
 | Type System          | Statically Typed และมี Reference Type เช่น`&T`, `&mut T` ซึ่งกำหนดลักษณะการเข้าถึงและสิทธิ์ในการแก้ไขข้อมูล | Statically Typed ต้องระบุ Type และ Reference จะระบุชนิดของ Object เช่น String หรือ Object |
 | Memory Management    | ใช้ Ownership และ Borrowing โดยไม่ต้องใช้ Garbage Collector เป็นกลไกหลัก                                                                    | ใช้ Garbage Collector จัดการ Memory ของ Object โดยอัตโนมัติ                                       |
-| Safety               | Compiler ช่วยตรวจสอบ Memory Safety และกฎการ Borrowing                                                                                                   | มี Memory Safety จากการใช้ Reference และ Garbage Collector แต่ไม่มี Borrow Checker แบบ Rust      |
+| Safety             z  | Compiler ช่วยตรวจสอบ Memory Safety และกฎการ Borrowing                                                                                                   | มี Memory Safety จากการใช้ Reference และ Garbage Collector แต่ไม่มี Borrow Checker แบบ Rust      |
 
 ### Rust Example
 
@@ -828,26 +826,26 @@ int main() {
 | -------- | --------------------------------------- | ----: |
 | Member 1 | Concept + Short Code Illustration       | 5 min |
 | Member 2 | Detailed Code + Live Demo               | 5 min |
-| Member 3 | Rust vs Other Language + PPL Analysis   | 5 min |
+| Member 3 | Rust vs Other Languages + PPL Analysis   | 5 min |
 | Member 4 | Exercises + Common Mistakes + Challenge | 5 min |
 
 ### Individual Contribution
 
 **Member 1**
 
-`จัดทำเนื้อหา Concept และ Short Code รวมถึงจัดทำและตรวจสอบ Code ของส่วน Demo
+จัดทำเนื้อหา Concept และ Short Code รวมถึงจัดทำและตรวจสอบ Code ของส่วน Demo
 
 **Member 2**
 
-`ถอนรายวิชา จึงไม่มีการนำเสนอหรือการส่งมอบงานในบทนี้`
+ถอนรายวิชา จึงไม่มีการนำเสนอหรือการส่งมอบงานในบทนี้`
 
 **Member 3**
 
-`จัดทำเนื้อหา Rust vs Other Language และ PPL Analysis
+`จัดทำเนื้อหา Rust vs Other Languages และ PPL Analysis
 
 **Member 4**
 
-`จัดทำ Exercises, Common Mistakes และ Challenge ตามความรับผิดชอบเดิม และจัดทำส่วน Demo ใน README เป็นเอกสารประกอบ
+จัดทำ Exercises, Common Mistakes และ Challenge ตามความรับผิดชอบเดิม และจัดทำส่วน Demo ใน README เป็นเอกสารประกอบ
 
 > สมาชิกทุกคนต้องสามารถอธิบาย Code ของกลุ่มได้ ไม่ใช่เฉพาะส่วนที่ตนเองเขียน
 
