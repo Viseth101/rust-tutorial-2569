@@ -889,10 +889,10 @@ Slide Presentation Link : [https://canva.link/group-12-rust-tutorial-presentatio
 
 | Member   | Issues | Commits | Pull Requests | Code Reviews | Contribution                                         |
 | -------- | -----: | ------: | ------------: | -----------: | ---------------------------------------------------- |
-| Member 1 |      0 |      10 |             5 |           12 | Concept, Short Code และ Code ของ Demo          |
+| Member 1 |      0 |      24 |             7 |           15 | Concept, Short Code และ Code ของ Demo |
 | Member 2 |      0 |       0 |             1 |            0 | ถอนรายวิชา                                 |
-| Member 3 |      0 |       6 |             3 |            4 | Rust vs Other Language และ PPL Analysis           |
-| Member 4 |      0 |      11 |             3 |           13 | Common Mistakes, Exercises และ Demo documentation |
+| Member 3 |      0 |       8 |             3 |            8 | Rust vs Other Language และ PPL Analysis |
+| Member 4 |      0 |      14 |             3 |           17 | Common Mistakes, Exercises และ Demo documentation |
 
 ### Teamwork Reflection
 
@@ -938,8 +938,8 @@ Slide Presentation Link : [https://canva.link/group-12-rust-tutorial-presentatio
 
 **Chapter Path:** `12-references-borrowing/`
 
-**Final PR:** `#[PR number]`
+**Final PR:** `pull/23`
 
 **Submitted by:** `Group 12`
 
-**Date:** `[YYYY-MM-DD]`
+**Date:** `2569-09-30`
