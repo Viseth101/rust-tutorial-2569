@@ -820,6 +820,8 @@ int main() {
 
 การนำเสนอมีสมาชิก **3 คน คนละประมาณ 5 นาที**
 
+Slide Presentation Link : [https://canva.link/group-12-rust-tutorial-presentation](https://canva.link/group-12-rust-tutorial-presentation)
+
 | Member   | Responsibility                          |  Time |
 | -------- | --------------------------------------- | ----: |
 | Member 1 | Concept + Short Code Illustration       | 5 min |
