@@ -12,10 +12,8 @@
 | - | ----------------------------------------- | ---------- | --------------- | --------------------------------------- |
 | 1 | Mr.UDTARAKVISETH LAY                      | 670710259  | `@Viseth101`  | Concept + Short Code                    |
 | 2 | ถอนรายวิชา                      |            |                 |                                         |
-| 3 | นางสาวณัฐณิชา ภู่วงษ์ | 670710291  | `@nncp-fs`    | Rust vs Other Languages + PPL Analysis   |
+| 3 | นางสาวณัฐณิชา ภู่วงษ์ | 670710291  | `@nncp-fs`    | Rust vs Other Languages + PPL Analysis  |
 | 4 | นายเทพพิทักษ์ นิลดำ     | 670710292  | `@670710292`  | Exercises + Common Mistakes + Challenge |
-
-> สมาชิกหมายเลข 2 ถอนรายวิชา จึงไม่มีหน้าที่นำเสนอ สมาชิกหมายเลข 1 รับผิดชอบการจัดทำ Code และสมาชิกหมายเลข 4 รับผิดชอบการจัดทำส่วน Demo ในเอกสารแทน โดยส่วน Demo จะจัดทำเป็นเอกสารและไม่ได้นำเสนอ
 
 ---
 
@@ -825,8 +823,8 @@ int main() {
 | Member   | Responsibility                          |  Time |
 | -------- | --------------------------------------- | ----: |
 | Member 1 | Concept + Short Code Illustration       | 5 min |
-| Member 2 | Detailed Code + Live Demo               | - |
-| Member 3 | Rust vs Other Languages + PPL Analysis   | 5 min |
+| Member 2 | Detailed Code + Live Demo               |     - |
+| Member 3 | Rust vs Other Languages + PPL Analysis  | 5 min |
 | Member 4 | Exercises + Common Mistakes + Challenge | 5 min |
 
 ### Individual Contribution
@@ -837,7 +835,7 @@ int main() {
 
 **Member 2**
 
-`ถอนรายวิชา จึงไม่มีการนำเสนอหรือการส่งมอบงานในบทนี้`
+`ถอนรายวิชา`
 
 **Member 3**
 
@@ -898,7 +896,7 @@ int main() {
 
 **How did your team collaborate?**
 
-ทีมแบ่งงานตามหัวข้อของบทเรียน สมาชิกแต่ละคนจัดทำส่วนที่ได้รับมอบหมาย แล้วรวมเนื้อหาและ Code ไว้ใน README เดียวกัน หลังจากสมาชิก 2 ถอนรายวิชา สมาชิก 1 รับผิดชอบ Code และสมาชิก 4 รับผิดชอบการจัดทำ Demo ในเอกสาร
+ทีมแบ่งงานตามหัวข้อของบทเรียน สมาชิกแต่ละคนจัดทำส่วนที่ได้รับมอบหมาย แล้วรวมเนื้อหาและ Code ไว้ใน README เดียวกัน 
 
 **Problems encountered**
 
