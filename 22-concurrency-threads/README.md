@@ -12,7 +12,7 @@
 
 | # | Name | Student ID | GitHub Username | Main Responsibility |
 |---|---|---|---|---|
-| 1 | นายกรวิชญ์ บุญชู | `630710836` | `@[username]` | Concept + Short Code |
+| 1 | นายกรวิชญ์ บุญชู | `630710836` | `@[630710836]` | Concept + Short Code |
 | 2 | นายผกาย เมืองแมน | `640710542` | `@[640710542]` | Detailed Code + Live Demo |
 | 3 | นางสาวศศิธร โตนาม | `640710572` | `@[username]` | Rust vs Other Language + PPL |
 | 4 | นายธนภัทร คงหอม | `640710845` | `@[username]` | Exercises + Common Mistakes |
@@ -784,8 +784,8 @@ AI ถูกใช้เพื่อช่วยจัดระเบียบ�
 | **Course** | 517321 Principles of Programming Languages |
 | **Group** | 22 |
 | **Submission** | 4 October 2026, 23:59 |
-| **Repository** | `[GitHub Repository URL]` |
-| **Pull Request** | `#[PR Number]` |
+| **Repository** | `[https://github.com/soonklang/rust-tutorial-2569/tree/main/22-concurrency-threads]` |
+| **Pull Request** | `#[26]` |
 
 ---
 
