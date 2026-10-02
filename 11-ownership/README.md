@@ -423,9 +423,9 @@ fn main() {
 > แนะนำให้มีอย่างน้อย **4 แหล่งอ้างอิง** และควรใช้เอกสารทางการเป็นหลัก
 
 1. `The Rust Programming Language: https://doc.rust-lang.org/book/`
-2. `Rust by Example / Rust Reference`
+2. `Rust by Example : https://doc.rust-lang.org/rust-by-example/`
 3. `W3School: https://www.w3schools.com/rust/`
-4. `The Rust Programming Language:: https://www.scs.stanford.edu/~zyedidia/docs/rust/rust_book.pdf page 82-96`
+4. `The Rust Programming Language Book: https://www.scs.stanford.edu/~zyedidia/docs/rust/rust_book.pdf page 82-96`
 
 ---
 
@@ -459,7 +459,7 @@ fn main() {
 | Member 1 | `0` | `3` | `1` | `1` | `Introduction + Key Concept + Important Syntax/Rule` |
 | Member 2 | `0` | `1` | `1` | `0` | `Runable Code Example` |
 | Member 3 | `0` | `1` | `1` | `0` | `PPL Perspective + Compare Rust with other languages` |
-| Member 4 | `0` | `4` | `2` | `0` | `Common Mistakes + Exercise + others` |
+| Member 4 | `0` | `6` | `2` | `0` | `Common Mistakes + Exercise + others` |
 
 ### Teamwork Reflection
 
@@ -507,4 +507,4 @@ fn main() {
 
 **Submitted by:** `Group 11`
 
-**Date:** `2026-10-01`
+**Date:** `2026-10-02`
