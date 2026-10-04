@@ -640,10 +640,10 @@ Exercies, Common Mistakes, Challenge
 
 | Member | Issues | Commits | Pull Requests | Code Reviews | Contribution |
 |---|---:|---:|---:|---:|---|
-| Member 1 | `0` | `27` | `1` | `0` | `Concept + Short Code Illustration` |
+| Member 1 | `0` | `33` | `1` | `5` | `Concept + Short Code Illustration` |
 | Member 2 | `0` | `3` | `1` | `8` | `Detailed Code + Live Demo` |
 | Member 3 | `0` | `9` | `1` | `2` | `Rust vs Other Language + PPL Analysis` |
-| Member 4 | `0` | `4` | `1` | `5` | `Exercises + Common Mistakes + Challenge` |
+| Member 4 | `0` | `6` | `1` | `5` | `Exercises + Common Mistakes + Challenge` |
 
 ### Teamwork Reflection
 
