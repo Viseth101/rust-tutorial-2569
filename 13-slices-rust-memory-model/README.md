@@ -292,7 +292,7 @@ pub fn first_word(s: &str) -> &str {
             return &s[0..i];}}
     &s[..]}
 
-pub fn string_and_str() {
+fn main() {
     let mut string = String::from("Silpakorn University");
     let literal: &'static str = "Silpakorn";
 
