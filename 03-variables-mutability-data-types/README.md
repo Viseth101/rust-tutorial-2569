@@ -681,7 +681,7 @@ Python ผูกชื่อกับ object และให้ rebind ชื่
 
 **Chapter Path:** `03-variables-mutability-data-types/`
 
-**Final PR:** ``
+**Final PR:** `47`
 
 **Submitted by:** `Group 03`
 
