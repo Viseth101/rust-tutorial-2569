@@ -230,6 +230,7 @@ quantity ประกาศด้วย mut จึงบวกค่าได้
 VAT_RATE เป็น const ที่อยู่ระดับ global และมี type กำกับ
 quantity ถูก shadow จาก i32 เป็น f64 ด้วย as f64 เพื่อนำไปคูณกับ unit_price ซึ่งทำได้เพราะเป็นตัวแปรใหม่ (Rust ไม่แปลง type ให้อัตโนมัติ)
 total ใน block ด้านในเป็นตัวแปรคนละตัวกับ total ด้านนอก (250 × 1.07 = 267.50) เมื่อจบ block ค่า total ด้านนอกยังเป็น 250
+
 ---
 
 ### Example 2 — Data Types
