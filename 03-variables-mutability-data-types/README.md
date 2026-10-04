@@ -184,56 +184,52 @@ Rust เป็นภาษา statically typed จึงต้องรู้ ty
 **Purpose:** สาธิตความต่างของ immutable, mutable, constant และ shadowing
 
 ```rust
-const MAX_POINTS: u32 = 100_000;
+const VAT_RATE: f64 = 0.07;
 
 fn main() {
-    // 1) immutable
-    let x = 5;
-    println!("x = {x}");
+    // 1) immutable: ราคาต่อชิ้นกำหนดแล้วเปลี่ยนไม่ได้
+    let unit_price = 50.0;
+    println!("ราคาต่อชิ้น = {unit_price}");
 
-    // 2) mutable
-    let mut count = 0;
-    count += 1;
-    count += 1;
-    println!("count = {count}");
+    // 2) mutable: จำนวนสินค้าเพิ่มได้
+    let mut quantity = 0;
+    quantity += 2;
+    quantity += 3;
+    println!("จำนวน = {quantity}");
 
-    // 3) constant
-    println!("MAX_POINTS = {MAX_POINTS}");
+    // 3) constant: อัตราภาษีมูลค่าเพิ่ม
+    println!("VAT_RATE = {VAT_RATE}");
 
-    // 4) shadowing เปลี่ยน type ได้
-    let spaces = "   ";
-    let spaces = spaces.len();
-    println!("spaces = {spaces}");
+    // 4) shadowing เปลี่ยน type ได้ (i32 -> f64)
+    let quantity = quantity as f64;
+    let total = unit_price * quantity;
+    println!("ยอดก่อนภาษี = {total}");
 
     // 5) shadowing ใน block
-    let y = 10;
     {
-        let y = y * 2;
-        println!("inner y = {y}");
+        let total = total * (1.0 + VAT_RATE);
+        println!("ยอดรวมภาษี (ใน block) = {total:.2}");
     }
-    println!("outer y = {y}");
+    println!("ยอดก่อนภาษี (นอก block) = {total}");
 }
-```
 
-**Expected Output**
+Expected Output
 
-```text
-x = 5
-count = 2
-MAX_POINTS = 100000
-spaces = 3
-inner y = 20
-outer y = 10
-```
+text
+ราคาต่อชิ้น = 50
+จำนวน = 5
+VAT_RATE = 0.07
+ยอดก่อนภาษี = 250
+ยอดรวมภาษี (ใน block) = 267.50
+ยอดก่อนภาษี (นอก block) = 250
 
-**Explanation**
+Explanation
 
-- `x` เป็น immutable จึงอ่านได้อย่างเดียว
-- `count` ประกาศด้วย `mut` จึงบวกค่าได้
-- `MAX_POINTS` เป็น `const` ที่อยู่ระดับ global และมี type กำกับ
-- `spaces` ถูก shadow จาก `&str` เป็น `usize` ซึ่งทำได้เพราะเป็นตัวแปรใหม่
-- `y` ใน block ด้านในเป็นตัวแปรคนละตัวกับ `y` ด้านนอก เมื่อจบ block ค่า `y` ด้านนอกยังเป็น 10
-
+unit_price เป็น immutable จึงอ่านได้อย่างเดียว (ค่า 50.0 เป็น f64 จึงแสดงผลเป็น 50)
+quantity ประกาศด้วย mut จึงบวกค่าได้ เมื่อบวก 2 และ 3 ค่าจึงเป็น 5
+VAT_RATE เป็น const ที่อยู่ระดับ global และมี type กำกับ
+quantity ถูก shadow จาก i32 เป็น f64 ด้วย as f64 เพื่อนำไปคูณกับ unit_price ซึ่งทำได้เพราะเป็นตัวแปรใหม่ (Rust ไม่แปลง type ให้อัตโนมัติ)
+total ใน block ด้านในเป็นตัวแปรคนละตัวกับ total ด้านนอก (250 × 1.07 = 267.50) เมื่อจบ block ค่า total ด้านนอกยังเป็น 250
 ---
 
 ### Example 2 — Data Types
