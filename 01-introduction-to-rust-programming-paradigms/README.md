@@ -683,14 +683,14 @@ Exercies, Common Mistakes, Challenge
 
 ## Submission Information
 
-**Repository:** `[GitHub repository URL]`
+**Repository:** `https://github.com/soonklang/rust-tutorial-2569`
 
-**Chapter Path:** `[เช่น chapters/01-introduction/]`
+**Chapter Path:** `01-introduction-to-rust-programming-paradigms`
 
-**Final PR:** `#[PR number]`
+**Final PR:** ``
 
-**Submitted by:** `[Group XX]`
+**Submitted by:** `Group 1`
 
-**Date:** `[YYYY-MM-DD]`
+**Date:** `2026-10-04`
 
 *โครงสร้างเอกสารฉบับเต็ม (Key Concepts, Runnable Code Examples, Common Mistakes, Exercises, PPL Perspective, Rust vs Other Language, References, AI Usage Declaration, GitHub Contribution, Final Checklist) ให้ทำต่อจากจุดนี้ตาม Template หลักของวิชา (`rust_tutorial_template.md`) ที่แนบมากับใบมอบหมายงาน*
