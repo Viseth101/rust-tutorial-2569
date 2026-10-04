@@ -407,76 +407,79 @@ Rust ไม่มี implicit numeric conversion เพื่อกันข้�
 
 ## 8. Exercises
 
-### Exercise 1 — แปลงอุณหภูมิด้วย Shadowing
+### Exercise 1 — คำนวณราคาสินค้าด้วย Shadowing
 
-**Problem**
+Problem
 
-กำหนดข้อความอุณหภูมิเซลเซียส `"36.5"` ให้แปลงเป็น `f64` แล้วแปลงเป็นฟาเรนไฮต์ด้วยสูตร `F = C × 9 / 5 + 32` และแสดงผลทศนิยม 1 ตำแหน่ง โดยใช้ **ชื่อตัวแปร `temp` เพียงชื่อเดียว** (ใช้ shadowing)
+กำหนดราคาสินค้าเป็นข้อความ "1200" ให้แปลงเป็น f64 แล้วลดราคา 10% จากนั้นบวกภาษีมูลค่าเพิ่ม 7% และแสดงราคาสุทธิทศนิยม 2 ตำแหน่ง โดยใช้ ชื่อตัวแปร price เพียงชื่อเดียว (ใช้ shadowing) และไม่ใช้ mut
 
-**Hint**
+Hint
 
-ใช้ `.parse()` พร้อมระบุ type เป็น `f64` และใช้ `{:.1}` เพื่อกำหนดทศนิยม
+ใช้ .parse() พร้อมระบุ type เป็น f64 ลดราคา 10% คือคูณ 0.9 และบวกภาษี 7% คือคูณ 1.07 ใช้ {:.2} เพื่อกำหนดทศนิยม
 
-**Solution**
+Solution
 
-```rust
+rust
 fn main() {
-    let temp = "36.5";
-    let temp: f64 = temp.parse().unwrap();
-    let temp = temp * 9.0 / 5.0 + 32.0;
-    println!("{temp:.1} F");
+    let price = "1200";
+    let price: f64 = price.parse().unwrap();
+    let price = price * 0.9;  // ลดราคา 10%
+    let price = price * 1.07; // บวกภาษี 7%
+    println!("ราคาสุทธิ = {price:.2} บาท");
 }
-```
 
-**Expected Output**
+Expected Output
 
-```text
-97.7 F
-```
+text
+ราคาสุทธิ = 1155.60 บาท
 
-**Explanation**
+Explanation
 
-`temp` ถูก shadow 3 ครั้ง คือ `&str` → `f64` (ค่าเซลเซียส) → `f64` (ค่าฟาเรนไฮต์) ทำให้ไม่ต้องตั้งชื่อใหม่อย่าง `temp_str`, `temp_c`, `temp_f` และทุกตัวยังเป็น immutable
+price ถูก shadow 3 ครั้ง คือ &str → f64 (ราคาเต็ม) → f64 (หลังลดราคา) → f64 (หลังบวกภาษี) ทำให้ใช้ชื่อเดียวได้โดยไม่ต้องใช้ mut และตัวแปรทุกตัวยังเป็น immutable ราคาหลังลด 10% คือ 1080 และบวกภาษี 7% เป็น 1155.60
 
 ---
 
-### Exercise 2 — รวมคะแนนด้วย Array, `mut` และ Tuple
+### Exercise 2 — หาอุณหภูมิต่ำสุดและสูงสุดด้วย Array, mut และ Tuple
 
-**Problem**
+Problem
 
-มี array คะแนน `[70, 85, 90, 65, 80]` ให้หาผลรวมและค่าเฉลี่ย เก็บผลลัพธ์ไว้ใน tuple `(i32, f64)` แล้วแสดงผล
+มี array อุณหภูมิ 6 วัน [31, 28, 35, 30, 33, 27] ให้หาค่าต่ำสุดและสูงสุด เก็บผลลัพธ์ไว้ใน tuple (i32, i32) แล้วแสดงผล พร้อมหาช่วงอุณหภูมิ (สูงสุด − ต่ำสุด)
 
-**Hint**
+Hint
 
-ต้องใช้ `let mut` สำหรับตัวสะสมผลรวม และต้องแปลง `i32` กับ `usize` เป็น `f64` ด้วย `as` ก่อนหาร
+กำหนดตัวแปร mut สำหรับค่าต่ำสุดและสูงสุดเริ่มจากสมาชิกตัวแรก temps[0] แล้วใช้ลูป for เทียบค่าทีละตัว
 
-**Solution**
+Solution
 
-```rust
+rust
 fn main() {
-    let scores: [i32; 5] = [70, 85, 90, 65, 80];
+    let temps: [i32; 6] = [31, 28, 35, 30, 33, 27];
 
-    let mut sum = 0;
-    for s in scores {
-        sum += s;
+    let mut min = temps[0];
+    let mut max = temps[0];
+    for t in temps {
+        if t < min {
+            min = t;
+        }
+        if t > max {
+            max = t;
+        }
     }
 
-    let avg = sum as f64 / scores.len() as f64;
-    let result: (i32, f64) = (sum, avg);
-
-    println!("sum = {}, average = {:.1}", result.0, result.1);
+    let range: (i32, i32) = (min, max);
+    println!("min = {}, max = {}", range.0, range.1);
+    println!("ช่วงอุณหภูมิ = {}", range.1 - range.0);
 }
-```
 
-**Expected Output**
+Expected Output
 
-```text
-sum = 390, average = 78.0
-```
+text
+min = 27, max = 35
+ช่วงอุณหภูมิ = 8
 
-**Explanation**
+Explanation
 
-`sum` ต้องเป็น `mut` เพราะค่าเปลี่ยนในลูป `scores.len()` คืน `usize` จึงต้อง cast เป็น `f64` ก่อนหาร และ tuple ใช้รวมผลลัพธ์ต่าง type (`i32` กับ `f64`) ไว้ด้วยกัน
+min และ max ต้องเป็น mut เพราะค่าเปลี่ยนระหว่างลูป การเข้าถึง temps[0] เป็นการอ่านสมาชิก array ด้วย index (Rust ตรวจ bounds ตอน runtime) tuple (i32, i32) ใช้รวมผลลัพธ์สองค่าไว้ด้วยกัน และเข้าถึงด้วย range.0 กับ range.1
 
 ---
 
