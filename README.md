@@ -50,3 +50,98 @@
 ## AI Usage Declaration
 
 ทุกกลุ่มต้องระบุการใช้ AI อย่างโปร่งใสในเอกสารของตนเอง (ดูหัวข้อ 13 ใน Template)
+
+## Collaborator Status
+
+**Summary:** 19 added, 50 pending invitation, 19 not added yet. (Total 88 students)
+
+| Group | Student ID | GitHub Username | Status |
+|---|---|---|---|
+| 1 | 650710069 | 650710069 | Pending (invited, not yet accepted) |
+| 1 | 660710072 | 660710072 | Pending (invited, not yet accepted) |
+| 1 | 660710073 | 660710073 | Pending (invited, not yet accepted) |
+| 1 | 660710079 | 660710079 | Pending (invited, not yet accepted) |
+| 2 | 660710097 | 660710097 | Added |
+| 2 | 660710102 | 660710102 | Pending (invited, not yet accepted) |
+| 2 | 660710107 | 660710107 | Added |
+| 2 | 660710108 | 660710108 | Added |
+| 3 | 660710606 | 660710606 | Pending (invited, not yet accepted) |
+| 3 | 660710613 | 660710613 | Pending (invited, not yet accepted) |
+| 3 | 660710624 | 660710624 | Pending (invited, not yet accepted) |
+| 3 | 660710626 | 660710626 | Pending (invited, not yet accepted) |
+| 4 | 660710976 | 660710976 | Pending (invited, not yet accepted) |
+| 4 | 670710121 | 670710121 | Pending (invited, not yet accepted) |
+| 4 | 670710122 | 670710122 | Pending (invited, not yet accepted) |
+| 4 | 670710123 | 670710123 | Added |
+| 5 | 670710124 | 670710124 | Pending (invited, not yet accepted) |
+| 5 | 670710125 | 670710125 | Added |
+| 5 | 670710126 | 670710126 | Pending (invited, not yet accepted) |
+| 5 | 670710127 | 670710127 | Pending (invited, not yet accepted) |
+| 6 | 670710128 | 670710128 | Pending (invited, not yet accepted) |
+| 6 | 670710130 | 670710130 | Added |
+| 6 | 670710131 | 670710131 | Pending (invited, not yet accepted) |
+| 6 | 670710132 | 670710132 | Pending (invited, not yet accepted) |
+| 7 | 670710133 | 670710133 | Added |
+| 7 | 670710134 | 670710134 | Pending (invited, not yet accepted) |
+| 7 | 670710135 | 670710135 | Pending (invited, not yet accepted) |
+| 7 | 670710136 | 670710136 | Pending (invited, not yet accepted) |
+| 8 | 670710137 | 670710137 | Pending (invited, not yet accepted) |
+| 8 | 670710138 | 670710138 | Pending (invited, not yet accepted) |
+| 8 | 670710139 | 670710139 | Pending (invited, not yet accepted) |
+| 8 | 670710140 | 670710140 | Added |
+| 9 | 670710142 | 670710142 | Pending (invited, not yet accepted) |
+| 9 | 670710143 | 670710143 | Pending (invited, not yet accepted) |
+| 9 | 670710144 | 670710144 | Pending (invited, not yet accepted) |
+| 9 | 670710145 | 670710145 | Pending (invited, not yet accepted) |
+| 10 | 670710146 | 670710146 | Added |
+| 10 | 670710148 | 670710148 | Pending (invited, not yet accepted) |
+| 10 | 670710149 | 670710149 | Pending (invited, not yet accepted) |
+| 10 | 670710150 | 670710150 | Pending (invited, not yet accepted) |
+| 11 | 670710151 | 670710151 | Pending (invited, not yet accepted) |
+| 11 | 670710152 | 670710152 | Pending (invited, not yet accepted) |
+| 11 | 670710153 | 670710153 | Added |
+| 11 | 670710258 | sotheasokea | Added |
+| 12 | 670710259 | Viseth101 | Added |
+| 12 | 670710290 | 670710290 | Pending (invited, not yet accepted) |
+| 12 | 670710291 | 670710291 | Not added |
+| 12 | 670710292 | 670710292 | Pending (invited, not yet accepted) |
+| 13 | 670710293 | 670710293 | Pending (invited, not yet accepted) |
+| 13 | 670710294 | 670710294 | Pending (invited, not yet accepted) |
+| 13 | 670710296 | 670710296 | Added |
+| 13 | 670710336 | 670710336 | Pending (invited, not yet accepted) |
+| 14 | 670710619 | 670710619 | Pending (invited, not yet accepted) |
+| 14 | 670710620 | 670710620 | Pending (invited, not yet accepted) |
+| 14 | 670710621 | 670710621 | Added |
+| 14 | 670710622 | 670710622 | Added |
+| 15 | 670710623 | 670710623 | Pending (invited, not yet accepted) |
+| 15 | 670710624 | 670710624 | Pending (invited, not yet accepted) |
+| 15 | 670710625 | 670710625 | Pending (invited, not yet accepted) |
+| 15 | 670710626 | 670710626 | Pending (invited, not yet accepted) |
+| 16 | 670710627 | 670710627 | Pending (invited, not yet accepted) |
+| 16 | 670710628 | 670710628 | Pending (invited, not yet accepted) |
+| 16 | 670710629 | 670710629 | Pending (invited, not yet accepted) |
+| 16 | 670710630 | 670710630 | Not added |
+| 17 | 670710631 | 670710631 | Not added |
+| 17 | 670710632 | 670710632 | Pending (invited, not yet accepted) |
+| 17 | 670710633 | 670710633 | Added |
+| 17 | 670710634 | 670710634 | Added |
+| 18 | 670710635 | 670710635 | Not added |
+| 18 | 670710636 | 670710636 | Pending (invited, not yet accepted) |
+| 18 | 670710637 | 670710637 | Not added |
+| 18 | 670710638 | 670710638 | Not added |
+| 19 | 670710639 | 670710639 | Not added |
+| 19 | 670710641 | 670710641 | Not added |
+| 19 | 670710642 | 670710642 | Not added |
+| 19 | 670710643 | 670710643 | Not added |
+| 20 | 670710646 | 670710646 | Added |
+| 20 | 670710647 | 670710647 | Not added |
+| 20 | 670710648 | 670710648 | Not added |
+| 20 | 670710651 | 670710651 | Not added |
+| 21 | 670710653 | 670710653 | Not added |
+| 21 | 670710654 | 670710654 | Added |
+| 21 | 630710128 | 630710128 | Not added |
+| 21 | 630710136 | 630710136 | Not added |
+| 22 | 630710836 | 630710836 | Not added |
+| 22 | 640710542 | 640710542 | Pending (invited, not yet accepted) |
+| 22 | 640710572 | 640710572 | Not added |
+| 22 | 640710845 | 640710845 | Not added |
