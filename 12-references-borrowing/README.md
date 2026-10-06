@@ -329,7 +329,116 @@ fn main() {
 
 ## 8. Exercises
 
-### Exercise 1 — `To go or not to go, that is the question`
+### Exercise 1 — `[Exercise Name]`
+
+**Problem**
+
+`กำหนดให้ตัวแปร message เก็บข้อความ "Hello, Rust!" จงเติมโค้ดในส่วนที่กำหนดให้โปรแกรมสามารถพิมพ์ข้อความต้นฉบับ และแก้ไขโดยการเพิ่มประโยค " Have a nice day!" แล้วพิมพ์ออกมาอีกครั้ง`
+
+```rust
+fn main() {
+    let mut message = String::from("Hello, Rust!");
+    let message_reference = __________________;
+    println!("ข้อความเดิม: {}", message_reference);
+
+    let message_reference = __________________;
+    __________________;
+    println!("ข้อความใหม่: {}", message_reference);
+}
+```
+
+**Hint**
+
+`Immutable Reference ใช้ & ส่วน Mutable Reference ใช้ &mut และตัวแปรที่ถูกอ้างอิงต้องประกาศด้วย mut หากต้องการแก้ไขข้อมูล`
+
+**Solution**
+
+```rust
+// Solution code
+fn main() {
+    let mut message = String::from("Hello, Rust!");
+    let message_reference = &message;
+    println!("ข้อความเดิม: {}", message_reference);
+
+    let message_reference = &mut message;
+    message_reference.push_str(" Have a nice day!");
+    println!("ข้อความใหม่: {}", message_reference);
+}
+```
+
+**Explanation**
+
+`ในช่วงแรก message_reference เป็น Immutable Reference ที่สร้างด้วย &message จึงสามารถใช้เข้าถึงข้อมูลของ message ได้ แต่ไม่สามารถแก้ไขข้อมูลผ่าน Reference นี้ได้
+หลังจากใช้งาน Immutable Reference เสร็จแล้ว จึงสร้าง Mutable Reference ด้วย &mut message เพื่อให้สามารถแก้ไขข้อความด้วย push_str() ได้
+ตัวอย่างนี้แสดงให้เห็นว่า Rust แยกการเข้าถึงข้อมูลแบบ Immutable (&T) และ Mutable (&mut T) อย่างชัดเจน โดย Mutable Reference สามารถใช้แก้ไขข้อมูลที่อ้างอิงได้ แต่ตัวแปรต้นทางต้องประกาศเป็น mut`
+
+---
+
+### Exercise 2 — `Longest Entry in Report`
+
+**Problem**
+
+```rust
+fn longest_line(text: &String) -> &str {
+    let mut best = "";
+    for line in text.lines() {
+        if line.len() > best.len() {
+            best = line;
+        }
+    }
+    best
+}
+
+fn get_report() -> &'static str {
+    let text = String::from("short\na much longer line here\nmid");
+    longest_line(&text)
+}
+
+fn main() {
+    let report = get_report();
+    println!("{}", report);
+}
+```
+
+`โค้ดนี้สามารถ compile ได้ไหม ถ้าไม่ได้ เป็นเพราะอะไร แก้ไขอย่างไร`
+
+**Hint**
+
+`ลองพิจารณาว่าการ return ค่าแบบใดที่จะทำให้ข้อมูลยังสามารถถูก reference ได้`
+
+**Solution**
+
+```rust
+// Solution code
+fn longest_line(text: &String) -> String {
+    let mut best = "";
+    for line in text.lines() {
+        if line.len() > best.len() {
+            best = line;
+        }
+    }
+    best.to_string()
+}
+
+fn get_report() -> String {
+    let text = String::from("short\na much longer line here\nmid");
+    longest_line(&text)
+}
+
+fn main() {
+    let report = get_report();
+    println!("{}", report);
+}
+```
+
+**Explanation**
+
+`โค้ดนี้ไม่สามารถ compile ได้เพราะ get_report() ประกาศว่าจะคืนค่า &'static str แต่ longest_line() คืน reference ที่ยืมมาจาก text ซึ่งเป็น local variable และมีอายุไม่ถึง 'static จึงไม่สามารถคืน reference นี้ออกจากฟังก์ชันได้ วิธีแก้หนึ่งคือเปลี่ยน return type ของทั้งสองฟังก์ชันเป็น String เพื่อคืน ownership ของข้อความ`
+
+---
+
+## 9.Challenge Question
+`To go or not to go, that is the question`
 
 **Problem**
 
@@ -408,70 +517,7 @@ if should_add {
 
 ---
 
-### Exercise 2 — `Longest Entry in Report`
-
-**Problem**
-
-```rust
-fn longest_line(text: &String) -> &str {
-    let mut best = "";
-    for line in text.lines() {
-        if line.len() > best.len() {
-            best = line;
-        }
-    }
-    best
-}
-
-fn get_report() -> &'static str {
-    let text = String::from("short\na much longer line here\nmid");
-    longest_line(&text)
-}
-
-fn main() {
-    let report = get_report();
-    println!("{}", report);
-}
-```
-
-`โค้ดนี้สามารถ compile ได้ไหม ถ้าไม่ได้ เป็นเพราะอะไร แก้ไขอย่างไร`
-
-**Hint**
-
-`ลองพิจารณาว่าการ return ค่าแบบใดที่จะทำให้ข้อมูลยังสามารถถูก reference ได้`
-
-**Solution**
-
-```rust
-// Solution code
-fn longest_line(text: &String) -> String {
-    let mut best = "";
-    for line in text.lines() {
-        if line.len() > best.len() {
-            best = line;
-        }
-    }
-    best.to_string()
-}
-
-fn get_report() -> String {
-    let text = String::from("short\na much longer line here\nmid");
-    longest_line(&text)
-}
-
-fn main() {
-    let report = get_report();
-    println!("{}", report);
-}
-```
-
-**Explanation**
-
-`โค้ดนี้ไม่สามารถ compile ได้เพราะ get_report() ประกาศว่าจะคืนค่า &'static str แต่ longest_line() คืน reference ที่ยืมมาจาก text ซึ่งเป็น local variable และมีอายุไม่ถึง 'static จึงไม่สามารถคืน reference นี้ออกจากฟังก์ชันได้ วิธีแก้หนึ่งคือเปลี่ยน return type ของทั้งสองฟังก์ชันเป็น String เพื่อคืน ownership ของข้อความ`
-
----
-
-## 9. PPL Perspective
+## 10. PPL Perspective
 
 > **ส่วนนี้เป็นหัวใจของรายวิชา Principles of Programming Languages**
 
@@ -617,7 +663,7 @@ Rust ใช้ References & Borrowing เพื่อสร้างสมดุ
 
 ---
 
-## 10. Rust vs. Other Languages
+## 11. Rust vs. Other Languages
 
 **Comparison Language:** `Python`
 
@@ -816,7 +862,7 @@ int main() {
 
 ---
 
-## 11. Teach Your Topic
+## 12. Teach Your Topic
 
 การนำเสนอมีสมาชิก **3 คน คนละประมาณ 5 นาที**
 
@@ -851,7 +897,7 @@ Slide Presentation Link : [https://canva.link/group-12-rust-tutorial-presentatio
 
 ---
 
-## 12. References
+## 13. References
 
 > แนะนำให้มีอย่างน้อย **4 แหล่งอ้างอิง** และควรใช้เอกสารทางการเป็นหลัก
 
@@ -862,7 +908,7 @@ Slide Presentation Link : [https://canva.link/group-12-rust-tutorial-presentatio
 
 ---
 
-## 13. AI Usage Declaration
+## 14. AI Usage Declaration
 
 สามารถใช้ AI เป็นเครื่องมือช่วยเรียนรู้และพัฒนาได้ แต่สมาชิกทุกคนต้องเข้าใจและสามารถอธิบายผลงานของกลุ่มได้
 
@@ -885,14 +931,14 @@ Slide Presentation Link : [https://canva.link/group-12-rust-tutorial-presentatio
 
 ---
 
-## 14. GitHub Contribution
+## 15. GitHub Contribution
 
 | Member   | Issues | Commits | Pull Requests | Code Reviews | Contribution                                         |
 | -------- | -----: | ------: | ------------: | -----------: | ---------------------------------------------------- |
 | Member 1 |      0 |      24 |             7 |           15 | Concept, Short Code และ Code ของ Demo |
 | Member 2 |      0 |       0 |             1 |            0 | ถอนรายวิชา                                 |
 | Member 3 |      0 |       8 |             3 |            8 | Rust vs Other Language และ PPL Analysis |
-| Member 4 |      0 |      14 |             3 |           17 | Common Mistakes, Exercises และ Demo documentation |
+| Member 4 |      0 |      15 |             4 |           17 | Common Mistakes, Exercises และ Demo documentation |
 
 ### Teamwork Reflection
 
@@ -910,7 +956,7 @@ Slide Presentation Link : [https://canva.link/group-12-rust-tutorial-presentatio
 
 ---
 
-## 15. Final Checklist
+## 16. Final Checklist
 
 - [X] Learning Objectives ครบ 3–4 ข้อ
 - [X] Key Concepts ครบถ้วน
