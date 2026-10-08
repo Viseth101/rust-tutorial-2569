@@ -612,7 +612,7 @@ Rust เลือกให้ compiler ตรวจสอบ type, ownership แ
 **Member 1**
 
 นาธาน ศรีนาคาร — **Concept + Short Code Illustration**  
-รับผิดชอบอธิบายแนวคิดหลักของหัวข้อ ได้แก่ `let`, `mut`, `const` และ shadowing พร้อมยกตัวอย่างโค้ดสั้น ๆ ประกอบการอธิบาย และนำเสนอส่วน Concept
+รับผิดชอบอธิบายแนวคิดหลักของหัวข้อ ได้แก่ `let`, `mut`, `const` และ shadowing และนำเสนอส่วน Concept
 
 **Member 2**
 
@@ -622,12 +622,12 @@ Rust เลือกให้ compiler ตรวจสอบ type, ownership แ
 **Member 3**
 
 พีรดนษ์ นิกพงศ์ — **Rust, Other Language, PPL Analysis**  
-รับผิดชอบการเปรียบเทียบ Rust กับ Python และการวิเคราะห์ตามหลัก Principles of Programming Languages (syntax, semantics, type system, memory management) และนำเสนอส่วนนี้
+รับผิดชอบการเปรียบเทียบ Rust กับ Python และการวิเคราะห์ตามหลัก Principles of Programming Languages (syntax, semantics, type system, memory management) และนำเสนอส่วนนี้, ทำSlide
 
 **Member 4**
 
 รชต กระเช้าเพีชร์ — **Exercises, Common Mistakes, Challenge**  
-รับผิดชอบแบบฝึกหัด 2 ข้อพร้อมเฉลย, ข้อผิดพลาดที่พบบ่อยพร้อมตัวอย่างโค้ดที่ผิดและโค้ดที่ถูกต้อง และโจทย์ท้าทายให้ผู้ฟังลองตอบระหว่างนำเสนอ
+รับผิดชอบแบบฝึกหัด 2 ข้อพร้อมเฉลย, ข้อผิดพลาดที่พบบ่อยพร้อมตัวอย่างโค้ดที่ผิดและโค้ดที่ถูกต้อง และโจทย์ท้าทายให้ผู้ฟังลองตอบระหว่างนำเสนอ, ทำSlide
 
 > สมาชิกทุกคนต้องสามารถอธิบาย Code ของกลุ่มได้ ไม่ใช่เฉพาะส่วนที่ตนเองเขียน
 
