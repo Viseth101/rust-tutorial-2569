@@ -1,0 +1,6 @@
+[package]
+name = "exercise1_mama_rescue_missions"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
