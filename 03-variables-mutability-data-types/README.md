@@ -524,17 +524,17 @@ Rust ใช้ keyword `let` สำหรับการประกาศตั
 
 ---
 
-## 10. Rust vs. Other Language
+## 10. Rust vs. Other Languages
 
-**Comparison Language:** Python
+**Comparison Languages:** Python, Java, C
 
-| Aspect | Rust | Python |
-|---|---|---|
-| Syntax | `let x: i32 = 5;` ต้องมี `let` | `x = 5` กำหนดค่าได้ทันที |
-| Semantics / Behavior | ตัวแปร immutable เป็นค่าเริ่มต้น ต้อง `mut` | ตัวแปรเปลี่ยนค่าได้เสมอ (rebind) |
-| Type System | Static, strong, มี type inference | Dynamic, strong (type ผูกกับค่า ไม่ใช่ตัวแปร) |
-| Memory Management | Stack/Scope-based, ไม่มี GC | Reference counting + garbage collector |
-| Safety | จับ type error และการเปลี่ยนค่าผิดที่ตอน compile | พบ type error ตอน runtime เท่านั้น |
+| **Aspect** | **Rust** | **Python** | **Java** | **C** |
+|---|---|---|---|---|
+| **Syntax** | `let x: i32 = 5;` ต้องมี `let` | `x = 5` กำหนดค่าได้ทันที | `int x = 5;` ต้องระบุชนิดข้อมูล | `int x = 5;` ต้องระบุชนิดข้อมูล |
+| **Semantics / Behavior** | ตัวแปร immutable เป็นค่าเริ่มต้น ต้อง `mut` | ตัวแปรเปลี่ยนค่าได้เสมอ (rebind) | ตัวแปรเปลี่ยนค่าได้ เว้นแต่ใช้ `final` | ตัวแปรเปลี่ยนค่าได้เป็นค่าเริ่มต้น |
+| **Type System** | Static, strong, มี type inference | Dynamic, strong (type ผูกกับค่า ไม่ใช่ตัวแปร) | Static, strong, มี type checking ตอน compile | Static, มี implicit conversions ได้หลายกรณี |
+| **Memory Management** | Ownership, borrowing, scope-based, ไม่มี GC | Garbage collection + reference counting | Garbage Collector (GC) | Manual memory management (`malloc` / `free`) |
+| **Safety** | ตรวจ type, ownership และ borrowing ตอน compile | Type error ส่วนใหญ่พบตอน runtime และมี GC ช่วยจัดการ memory | Type checking ตอน compile และมี GC ช่วยลด memory errors | ผู้พัฒนาต้องระวัง pointer, buffer overflow และ memory leak |
 
 ### Rust Example
 
@@ -557,9 +557,42 @@ x = "hello"  # ได้ เพราะ type ผูกกับค่า ไม
 print(x)
 ```
 
+### Java Example
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        int x = 5;
+        x = 6; // ✅ เปลี่ยนค่าได้
+        // x = "hello"; // ❌ compile error
+        System.out.println(x);
+    }
+}
+```
+
+### C Example
+
+```c
+#include <stdio.h>
+
+int main() {
+    int x = 5;
+    x = 6; // ✅ เปลี่ยนค่าได้
+    // x = "hello"; // ❌ type mismatch
+    printf("%d\n", x);
+    return 0;
+}
+```
+
 ### Analysis
 
-Python ผูกชื่อกับ object และให้ rebind ชื่อไปยังค่า type ใดก็ได้ในทุกเวลา ทำให้เขียนเร็วแต่ข้อผิดพลาดเรื่อง type ไปปรากฏตอน runtime (ต้องพึ่ง type hint และเครื่องมืออย่าง mypy ซึ่งไม่ได้บังคับ) ส่วน Rust เลือกให้ compiler ตรวจสอบทุกอย่างล่วงหน้า และให้ผู้เขียนระบุเจตนาด้วย `mut` หรือ shadowing อย่างชัดเจน แลกกับการเขียนโค้ดที่เคร่งครัดกว่า ผลที่ได้คือ performance ใกล้เคียง C/C++ โดยไม่ต้องมี garbage collector และปลอดภัยกว่า
+Python ผูกชื่อกับ object และให้ rebind ชื่อไปยังค่า type ใดก็ได้ในทุกเวลา ทำให้เขียนเร็วแต่ข้อผิดพลาดเรื่อง type ไปปรากฏตอน runtime (ต้องพึ่ง type hint และเครื่องมืออย่าง mypy ซึ่งไม่ได้บังคับ)
+
+Java เป็นภาษา statically typed เช่นเดียวกับ Rust และ C โดย type ของตัวแปรต้องสอดคล้องกับการประกาศ เช่น `int x = 5;` และ compiler สามารถตรวจสอบ type error ได้ก่อน run โดย Java ใช้ Garbage Collector เพื่อจัดการ memory ให้โดยอัตโนมัติ
+
+C เป็นภาษา statically typed และให้ผู้พัฒนาควบคุม memory และ hardware ได้ละเอียดมาก แต่การจัดการ memory เป็นความรับผิดชอบของผู้พัฒนาเอง จึงต้องระวัง pointer, memory leak และ buffer overflow
+
+Rust เลือกให้ compiler ตรวจสอบ type, ownership และ borrowing ล่วงหน้า และให้ผู้เขียนระบุเจตนาด้วย `mut` หรือ shadowing อย่างชัดเจน แลกกับการเขียนโค้ดที่เคร่งครัดกว่า ผลที่ได้คือ performance สูงโดยไม่ต้องมี garbage collector และมี memory safety สูงกว่า C ในขณะที่ยังคงแนวทาง system programming ได้
 
 ---
 
@@ -579,7 +612,7 @@ Python ผูกชื่อกับ object และให้ rebind ชื่
 **Member 1**
 
 นาธาน ศรีนาคาร — **Concept + Short Code Illustration**  
-รับผิดชอบอธิบายแนวคิดหลักของหัวข้อ ได้แก่ `let`, `mut`, `const` และ shadowing พร้อมยกตัวอย่างโค้ดสั้น ๆ ประกอบการอธิบาย และนำเสนอส่วน Concept
+รับผิดชอบอธิบายแนวคิดหลักของหัวข้อ ได้แก่ `let`, `mut`, `const` และ shadowing และนำเสนอส่วน Concept
 
 **Member 2**
 
@@ -589,12 +622,12 @@ Python ผูกชื่อกับ object และให้ rebind ชื่
 **Member 3**
 
 พีรดนษ์ นิกพงศ์ — **Rust, Other Language, PPL Analysis**  
-รับผิดชอบการเปรียบเทียบ Rust กับ Python และการวิเคราะห์ตามหลัก Principles of Programming Languages (syntax, semantics, type system, memory management) และนำเสนอส่วนนี้
+รับผิดชอบการเปรียบเทียบ Rust กับ Python และการวิเคราะห์ตามหลัก Principles of Programming Languages (syntax, semantics, type system, memory management) และนำเสนอส่วนนี้, ทำSlide
 
 **Member 4**
 
 รชต กระเช้าเพีชร์ — **Exercises, Common Mistakes, Challenge**  
-รับผิดชอบแบบฝึกหัด 2 ข้อพร้อมเฉลย, ข้อผิดพลาดที่พบบ่อยพร้อมตัวอย่างโค้ดที่ผิดและโค้ดที่ถูกต้อง และโจทย์ท้าทายให้ผู้ฟังลองตอบระหว่างนำเสนอ
+รับผิดชอบแบบฝึกหัด 2 ข้อพร้อมเฉลย, ข้อผิดพลาดที่พบบ่อยพร้อมตัวอย่างโค้ดที่ผิดและโค้ดที่ถูกต้อง และโจทย์ท้าทายให้ผู้ฟังลองตอบระหว่างนำเสนอ, ทำSlide
 
 > สมาชิกทุกคนต้องสามารถอธิบาย Code ของกลุ่มได้ ไม่ใช่เฉพาะส่วนที่ตนเองเขียน
 
@@ -681,7 +714,7 @@ Python ผูกชื่อกับ object และให้ rebind ชื่
 
 **Chapter Path:** `03-variables-mutability-data-types/`
 
-**Final PR:** `47`
+**Final PR:** ``
 
 **Submitted by:** `Group 03`
 
